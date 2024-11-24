@@ -32,6 +32,6 @@ class TicketController extends Controller
         $ticket->save();
 
         // Pass ticket details to view for display
-        return view('ticket_display', ['ticket' => $ticket]);
+        return view('auth.details', ['ticket' => $ticket]);
     }
 }
