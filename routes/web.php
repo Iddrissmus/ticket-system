@@ -39,3 +39,4 @@ Route::get('/login', function () {
 // Handle login
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
+Route::get('/tickets/{id}/invoice', [TicketController::class, 'generateInvoice'])->name('invoice');

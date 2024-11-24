@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TicketController extends Controller
 {   
@@ -33,5 +34,17 @@ class TicketController extends Controller
 
         // Pass ticket details to view for display
         return view('auth.details', ['ticket' => $ticket]);
+    }
+
+    public function generateInvoice($id)
+    {
+        // Fetch the ticket details
+        $ticket = Ticket::findOrFail($id);
+
+        // Pass ticket data to the PDF view
+        $pdf = Pdf::loadView('invoice', compact('ticket'));
+
+        // Return the PDF as a downloadable file
+        return $pdf->download('ticket-invoice-' . $ticket->id . '.pdf');
     }
 }

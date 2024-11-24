@@ -19,6 +19,7 @@
                 <p class="card-text">Car Type: {{ $ticket->car_type }}</p>
                 <p class="card-text">Price: {{$ticket->price, 2}} cedis</p>
                 <p class="card-text">Issued At: {{ $ticket->created_at }}</p>
+                <a href="{{ route('invoice', $ticket->id) }}" class="btn btn-primary">Download Invoice</a>
                 <button onclick="window.print()">Print Ticket</button>
             </div>
         </div>
